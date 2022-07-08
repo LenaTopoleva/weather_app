@@ -18,6 +18,7 @@ import com.lenatopoleva.weather.CITY
 import com.lenatopoleva.weather.MESSAGE_FROM_FIRST_FRAGMENT
 import com.lenatopoleva.weather.R
 import com.lenatopoleva.weather.REQUEST_KEY
+import com.lenatopoleva.weather.activities.MainActivity
 import java.util.regex.Pattern
 
 
@@ -110,6 +111,12 @@ class SecondFragment : Fragment() {
 
     private fun navigateBack() {
         activity?.supportFragmentManager?.popBackStack()
+       (activity as? MainActivity)?.titleList?.let {
+            it.removeAt(it.size - 1)
+        }
+        (activity as? MainActivity)?.topAppBar?.let {
+            it.title = (activity as? MainActivity)?.titleList?.last().toString()
+        }
     }
 
     companion object {
